@@ -1,0 +1,96 @@
+import java.util.*;
+import java.io.*;
+
+
+public class KeyValueStorageHandler {
+	
+	File file;
+	
+	private Set<String> keySet;
+	private long fileSize = 0;
+	
+	
+	// Create a file in the Given file path
+	public KeyValueStorageHandler(File file) {
+		
+		this.file = file;
+		keySet = new HashSet<>();
+		if (file.exists()) {
+			makeTheFileLive(file);
+			fileSize = file.length();
+		} else {
+			fileSize = 0;
+		}
+	}
+	
+	public String createNewKeyValuePair(String key, String value) {
+		
+		
+		if (key.length() > 32) {
+			return "Key size should be capped to 32";
+		}
+		
+		if (value.length() > 16*1024) {
+			return "The JSONObject size should be less than 16KB";
+		}
+		
+		if (keySet.contains(key)) {
+			return "The Key is already Present";
+		}
+		
+		if (fileSize > 1024*1000*1000) {
+			return "Memory limit exceeded";
+		}
+		
+		String data = key + "#" + value;
+		
+		String message = Writer.appendTheDataInFile(data, file);
+		
+		fileSize = file.length();
+		
+		keySet.add(key);
+		
+		return message;
+	}
+	
+	public String getTheValue(String key) {
+		
+		if (!keySet.contains(key)) {
+			return "Please enter the valid key";
+		}
+		
+		String message = Reader.readTheValue(key, file);
+		
+		return message;
+	}
+	
+	public String deleteTheKey(String key) {
+		
+		if (!key.contains(key)) {
+			return "Please enter the valid key";
+		}
+		
+		String message = Reader.deleteTheGivenKey(file, key);
+		
+		if (message.equals("The Key has been deleted Successfully")) {
+			keySet.remove(key);
+		}
+		
+		fileSize = file.length();
+		return message;
+	}
+	
+	private void makeTheFileLive(File file) {
+		
+		int count = 100;
+		while (!Reader.readAllTheKey(file, keySet) && count-->0) {
+			
+		}
+		
+		if (count == 0) {
+			System.out.println("Please restart the program unable to access the file");
+		}
+		
+	}
+	
+}
