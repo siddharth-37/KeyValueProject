@@ -1,0 +1,109 @@
+Enter the file Name that you want to create or access
+test3
+To Enter the file path manually press 1
+To use default path press any number except 1
+1
+Enter the filePath:
+Please use \\ instead of \ while entering filePath
+
+C:\\Users\\Siddharth\\Desktop\\pathforFile
+..Menu
+
+..Press 1 to create a new key value pair
+..Press 2 to Read the key
+..Press 3 to delete the key
+1
+....Creation Initiated
+....Enter the Key (The key size should not exceed more than 32)
+Siddharth
+....Enter the JSONObject (The size should be always less than 16KB)
+{ "name":"John", "age":30, "car":null }
+Successfully added to file
+....To continue press 1, To exit press any number except 1
+1
+....Enter the Key (The key size should not exceed more than 32)
+Murugesan
+....Enter the JSONObject (The size should be always less than 16KB)
+{ "name":"John", "age":30, "car":newCar }
+Successfully added to file
+....To continue press 1, To exit press any number except 1
+1
+....Enter the Key (The key size should not exceed more than 32)
+Naveen
+....Enter the JSONObject (The size should be always less than 16KB)
+{ "name":"naveen", "age":20, "car":oldCar }
+Successfully added to file
+....To continue press 1, To exit press any number except 1
+1
+....Enter the Key (The key size should not exceed more than 32)
+Karthick
+....Enter the JSONObject (The size should be always less than 16KB)
+{ "name":"John", "age":30, "car":carOld }
+Successfully added to file
+....To continue press 1, To exit press any number except 1
+4
+Create operation is done
+..Press 1 to continue with the same file
+..To exit or explore other file press any other number except 1
+1
+..Menu
+
+..Press 1 to create a new key value pair
+..Press 2 to Read the key
+..Press 3 to delete the key
+2
+....Reading Initiated
+Enter the key to display the JSON object
+Naveen
+{ "name":"naveen", "age":20, "car":oldCar }
+....To continue press 1, To exit press any number except 1
+2
+Read operation is done
+..Press 1 to continue with the same file
+..To exit or explore other file press any other number except 1
+1
+..Menu
+
+..Press 1 to create a new key value pair
+..Press 2 to Read the key
+..Press 3 to delete the key
+3
+....Deletion Initiated
+....Enter the key that has to be deleted
+Naveen
+The Key has been deleted Successfully
+....To continue press 1, To exit press any number except 1
+1
+....Enter the key that has to be deleted
+Naveen
+Please enter the valid key
+....To continue press 1, To exit press any number except 1
+2
+Delete operation is done
+..Press 1 to continue with the same file
+..To exit or explore other file press any other number except 1
+1
+..Menu
+
+..Press 1 to create a new key value pair
+..Press 2 to Read the key
+..Press 3 to delete the key
+2
+....Reading Initiated
+Enter the key to display the JSON object
+Naveen
+Please enter the valid key
+....To continue press 1, To exit press any number except 1
+1
+Enter the key to display the JSON object
+Siddharth
+{ "name":"John", "age":30, "car":null }
+....To continue press 1, To exit press any number except 1
+2
+Read operation is done
+..Press 1 to continue with the same file
+..To exit or explore other file press any other number except 1
+2
+To explore or create further file press 1
+To exit press any number except 1
+2
