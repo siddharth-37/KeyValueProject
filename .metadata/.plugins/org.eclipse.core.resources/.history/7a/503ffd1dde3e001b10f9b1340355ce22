@@ -68,6 +68,7 @@ public class Reader {
 			File tmp = new File("tmp.txt");
 			tmp.delete();
 			String keyLine = reader.readLine();
+			
 			while (keyLine != null) {
 				
 				String valueLine = reader.readLine();
@@ -77,25 +78,24 @@ public class Reader {
 					String status = Writer.appendTheDataInFile(data, tmp);
 					if (!status.equals("Successfully added to file")) {
 						reader.close();
+						System.out.println("readHere");
 						throw new IOException();
 					}
 				}
 				keyLine = reader.readLine();
 			}
-
 			
 			PrintWriter writer = new PrintWriter(file);
 			writer.print("");
 			writer.close();
 			reader.close();
-
 			
+			reader = new BufferedReader(new FileReader(tmp));
             
 			if (tmp.length() == 0)  {
 				return "The Key has been deleted Successfully";
 			}
 			
-			reader = new BufferedReader(new FileReader(tmp));
 			String line = reader.readLine();
 			
 			while (line != null) {
@@ -107,7 +107,7 @@ public class Reader {
 				}
 				line = reader.readLine();
 			}
-
+			
 			reader.close();
 			
 			tmp.delete();

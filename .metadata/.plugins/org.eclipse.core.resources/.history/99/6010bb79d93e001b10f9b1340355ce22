@@ -10,17 +10,17 @@ public class Reader {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			
-			String keyLine = reader.readLine();
+			String line = reader.readLine();
 			
-			while (keyLine != null) {
+			while (line != null) {
 				
-				String valueLine = reader.readLine();
-				if (keyLine.equals(key)) {
-					output = valueLine;
+				String[] arr = line.split("#");
+				if (arr[0].equals(key)) {
+					output = arr[1];
 					break;
 				}
 				
-				keyLine = reader.readLine();
+				line = reader.readLine();
 			}
 			
 			reader.close();
@@ -41,13 +41,13 @@ public class Reader {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			
-			String keyLine = reader.readLine();
+			String line = reader.readLine();
 			
-			while (keyLine != null) {
+			while (line != null) {
 				
-				keySet.add(keyLine);
-				reader.readLine();
-				keyLine = reader.readLine();
+				String[] arr = line.split("#");
+				keySet.add(arr[0]);
+				line = reader.readLine();
 			}
 			
 			reader.close();
@@ -67,36 +67,30 @@ public class Reader {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			File tmp = new File("tmp.txt");
 			tmp.delete();
-			String keyLine = reader.readLine();
-			while (keyLine != null) {
+			String line = reader.readLine();
+			
+			while (line != null) {
 				
-				String valueLine = reader.readLine();
+				String[] arr = line.split("#");
 				
-				if (!keyLine.equals(key)) {
-					String data = keyLine + "\n" + valueLine;
-					String status = Writer.appendTheDataInFile(data, tmp);
+				if (!arr[0].equals(key)) {
+					String status = Writer.appendTheDataInFile(line, tmp);
 					if (!status.equals("Successfully added to file")) {
 						reader.close();
 						throw new IOException();
 					}
 				}
-				keyLine = reader.readLine();
+				line = reader.readLine();
 			}
-
 			
 			PrintWriter writer = new PrintWriter(file);
 			writer.print("");
 			writer.close();
 			reader.close();
-
-			
-            
-			if (tmp.length() == 0)  {
-				return "The Key has been deleted Successfully";
-			}
 			
 			reader = new BufferedReader(new FileReader(tmp));
-			String line = reader.readLine();
+            
+			line = reader.readLine();
 			
 			while (line != null) {
 				
@@ -107,7 +101,7 @@ public class Reader {
 				}
 				line = reader.readLine();
 			}
-
+			
 			reader.close();
 			
 			tmp.delete();

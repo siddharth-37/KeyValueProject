@@ -10,10 +10,11 @@ public class Writer {
 			PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
 			
 			writer.println(data);
+			
 			writer.flush();
 			writer.close();
 		} catch (IOException expection) {
-			
+			System.out.println("here");
 			return "An Error has been occurred while accessing the file, Please try again..";
 		}
 		

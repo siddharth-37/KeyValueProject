@@ -42,7 +42,7 @@ public class KeyValueStorageHandler {
 			return "Memory limit exceeded";
 		}
 		
-		String data = key + "\n" + value;
+		String data = key + "#" + value;
 		
 		String message = Writer.appendTheDataInFile(data, file);
 		
